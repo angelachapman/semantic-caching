@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    ports:
+     - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - redis
+      - qdrant
+
+  redis:
+    image: "redis:alpine"
+
+  qdrant:
+    image: "qdrant/qdrant"
